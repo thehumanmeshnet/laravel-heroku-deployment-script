@@ -6,13 +6,13 @@ git add -A
 git commit -m "Procfile for Heroku"
 heroku create
 heroku buildpacks:set heroku/php
-php artisan key:generate --show > app_key
+php artisan key:generate --show > someRandomFileThatStoresAppKey
 
 while read myline
 do
   heroku config:set APP_KEY=$myline
-done < app_key
+done < someRandomFileThatStoresAppKey
 
-rm app_key
+rm someRandomFileThatStoresAppKey
 git push heroku master
-rm herokusetupscript.sh
+rm -rf laravel-heroku-deployment-script
